@@ -1,0 +1,42 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en-us" data-ng-app="giftFight">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Giftactics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel='stylesheet'>
+  <link href="{{ site.baseurl }}/style/giftfight.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container" data-ng-controller="CommandCtrl">
+    <div class="row">
+      <div class="two-thirds column">
+        <ol>
+          <li data-ng-repeat="name in participants">
+            <p
+              data-ng-bind="name"
+              data-ng-class="{active: $index === active}"
+              data-ng-click="stealGift($index)">
+            </p>
+          </li>
+          <li>
+            <form data-ng-submit="addName()">
+              <input data-ng-model="newName">
+            </form>
+          </li>
+        </ol>
+      </div>
+      <div class="one-third column">
+        <p>Gifts left: <span data-ng-bind="participants.length - turn"></span></p>
+        <button data-ng-click="pickGift()">Pick</button>
+      </div>
+    </div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+  <script src="{{ site.baseurl }}/scripts/giftfight.js"></script>
+</body>
+</html>
